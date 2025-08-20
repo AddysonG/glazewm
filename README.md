@@ -1,7 +1,11 @@
 # GlazeWM Config
 
-## Guide
+## Pre-requisites
 
-1. Install GlazeWM. If using Winget: `winget install GlazeWM`
-2. Clone this repo into `~/.glzr/`
+- WezTerm installed (for terminal shortcut
+
+## Setup
+
+1. Install GlazeWM. If using WinGet: `winget install GlazeWM`.
+2. Create the directory `.glzr/` and clone this repo into it.
 
