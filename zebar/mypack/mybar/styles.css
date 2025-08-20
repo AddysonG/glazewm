@@ -53,8 +53,8 @@
   );
 
   --button-gradient: linear-gradient(
-    rgb(from var(--surface2) r g b / 75%),
-    rgb(from var(--surface1) r g b / 75%)
+    rgb(from var(--surface2) r g b / 85%),
+    rgb(from var(--surface1) r g b / 85%)
   );
 
   --blue-gradient: linear-gradient(
@@ -86,7 +86,6 @@ html,
 body,
 #root {
   height: 100%;
-  border-bottom: 1px solid rgb(from var(--overlay0) r g b / 25%);
 }
 
 #root {
@@ -98,7 +97,8 @@ body,
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   height: 100%;
-  padding: 4px 0.5vw;
+  padding: 0 0.5vw;
+  border-bottom: 1px solid rgb(from var(--overlay0) r g b / 75%);
 }
 
 .left,
