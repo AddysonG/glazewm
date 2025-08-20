@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-- WezTerm installed (for terminal shortcut
+- WezTerm installed (for terminal shortcut)
 
 ## Setup
 
