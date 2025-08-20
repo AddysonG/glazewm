@@ -40,21 +40,21 @@
   --crust: #11111b;
 
   /* General appearance */
-  --text-size: 13px;
-  --icon-size: 13px;
+  --text-size: 14px;
+  --icon-size: 14px;
 
   --text-color: var(--text);
 
   --icon-color: var(--subtext1);
 
   --background-color: linear-gradient(
-    rgb(from var(--surface1) r g b / 60%),
-    rgb(from var(--surface0) r g b / 60%)
+    rgb(from var(--surface1) r g b / 75%),
+    rgb(from var(--surface0) r g b / 75%)
   );
 
   --button-gradient: linear-gradient(
-    rgb(from var(--surface2) r g b / 60%),
-    rgb(from var(--surface1) r g b / 60%)
+    rgb(from var(--surface2) r g b / 75%),
+    rgb(from var(--surface1) r g b / 75%)
   );
 
   --blue-gradient: linear-gradient(
@@ -156,7 +156,6 @@ body,
   background: var(--button-gradient);
   color: var(--text);
   border-radius: 2px;
-  line-height: 1;
   padding: 2px 6px;
   border: 0;
   cursor: pointer;
