@@ -224,7 +224,12 @@
                 </div>
               )}
 
-              {output.date?.formatted}
+              {output.date && (
+                <div className="date">
+                  <i className="nf nf-md-calendar_clock"></i>
+                  {output.date.formatted}
+                </div>
+              )}
 
             </div>
           </div>

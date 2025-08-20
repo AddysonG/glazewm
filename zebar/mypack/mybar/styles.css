@@ -5,48 +5,62 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 
 :root {
-  --text-size: 12px;
-  --icon-size: 12px;
+  /* Colors from Catppuccin (Mocha) */
 
-  --text-color-light: rgba(0 0 0 / 95%);
-  --text-color-dark: rgba(255 255 255 / 95%);
+  /* Base colors */
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
 
-  --icon-color-light: LightSteelBlue;
-  --icon-color-dark: rgba(115 130 175 / 95%);
+  /* Accents */
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
 
-  --background-color-light: rgba(238 238 238 / 90%);
-  --background-color-dark: linear-gradient(
-    rgb(0 0 0 / 90%),
-    rgb(5 2 20 / 85%)
+  /* Background */
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
+
+  /* General appearance */
+  --text-size: 13px;
+  --icon-size: 13px;
+
+  --text-color: var(--text);
+
+  --icon-color: var(--subtext1);
+
+  --background-color: linear-gradient(
+    rgb(from var(--surface1) r g b / 50%),
+    rgb(from var(--surface0) r g b / 50%)
   );
-}
 
-@media (prefers-color-scheme: light) {
-  body {
-    color: var(--text-color-light);
-  }
+  --button-gradient: linear-gradient(
+    rgb(from var(--surface2) r g b / 80%),
+    rgb(from var(--surface1) r g b / 80%)
+  );
 
-  i {
-    color: var(--icon-color-light);
-  }
-
-  #root {
-    background: var(--background-color-light);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: var(--text-color-dark);
-  }
-
-  i {
-    color: var(--icon-color-dark);
-  }
-
-  #root {
-    background: var(--background-color-dark);
-  }
+  --blue-gradient: linear-gradient(
+    var(--lavender),
+    var(--blue)
+  );
 }
 
 i {
@@ -55,8 +69,9 @@ i {
 }
 
 body {
-  font-family: ui-monospace, monospace;
+  font-family: "JetBrainsMono Nerd Font Propo", ui-monospace, monospace;
   font-size: var(--text-size);
+  color: var(--text-color);
   overflow: hidden;
 }
 
@@ -71,10 +86,11 @@ html,
 body,
 #root {
   height: 100%;
+  border-bottom: 1px solid rgb(from var(--overlay0) r g b / 25%);
 }
 
 #root {
-    background: rgba(49, 50, 68, 50);
+    background: var(--background-color);
 }
 
 .app {
@@ -108,7 +124,7 @@ body,
 .memory,
 .cpu,
 .battery {
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .workspaces {
@@ -117,10 +133,10 @@ body,
 }
 
 .workspace {
-  background: rgb(255 255 255 / 5%);
+  background: var(--button-gradient);
   margin-right: 4px;
-  padding: 4px 8px;
-  color: rgb(255 255 255 / 90%);
+  padding: 2px 6px;
+  color: var(--text);
   border: none;
   border-radius: 2px;
   cursor: pointer;
@@ -131,32 +147,53 @@ body,
 
   &.focused,
   &:hover {
-    background: rgb(75 115 255 / 50%);
+    color: var(--base);
+    background: var(--blue-gradient);
   }
 }
 
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
+  background: var(--button-gradient);
+  color: var(--text);
   border-radius: 2px;
   line-height: 1;
-  padding: 4px 8px;
+  padding: 2px 6px;
   border: 0;
   cursor: pointer;
+}
+
+.logo {
+  background: linear-gradient(var(--lavender), var(--blue));
+  -webkit-background-clip: text; /* clip background to text */
+  -webkit-text-fill-color: transparent; /* hide the normal text color */
+  color: var(--blue);
+}
+
+.network {
+  color: var(--sapphire);
 }
 
 .binding-mode {
   margin-right: 4px;
 }
 
+.memory {
+  color: var(--mauve);
+}
+
+.cpu {
+  color: var(--peach);
+}
+
 .cpu .high-usage {
-  color: #900029;
+  color: var(--red);
 }
 
 .battery {
   position: relative;
+  color: var(--green);
 }
 
 .battery .charging-icon {
@@ -165,3 +202,8 @@ body,
   left: -8px;
   top: 3px;
 }
+
+.date {
+  color: var(--blue);
+}
+
