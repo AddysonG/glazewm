@@ -32,7 +32,6 @@
         date: { type: 'date', formatting: 'MMM d (EEE) | t' },
         battery: { type: 'battery' },
         memory: { type: 'memory' },
-        weather: { type: 'weather' },
         audio: { type: 'audio' },
       });
 
@@ -47,15 +46,27 @@
 
         // Get icon to show for how much of the battery is charged.
         function getBatteryIcon(batteryOutput) {
+          if (batteryOutput.chargePercent > 98)
+            return <i className="nf nf-md-battery"></i>;
           if (batteryOutput.chargePercent > 90)
-            return <i className="nf nf-fa-battery_4"></i>;
+            return <i className="nf nf-md-battery_90"></i>;
+          if (batteryOutput.chargePercent > 80)
+            return <i className="nf nf-md-battery_80"></i>;
           if (batteryOutput.chargePercent > 70)
-            return <i className="nf nf-fa-battery_3"></i>;
+            return <i className="nf nf-md-battery_70"></i>;
+          if (batteryOutput.chargePercent > 60)
+            return <i className="nf nf-md-battery_60"></i>;
+          if (batteryOutput.chargePercent > 50)
+            return <i className="nf nf-md-battery_50"></i>;
           if (batteryOutput.chargePercent > 40)
-            return <i className="nf nf-fa-battery_2"></i>;
+            return <i className="nf nf-md-battery_40"></i>;
+          if (batteryOutput.chargePercent > 30)
+            return <i className="nf nf-md-battery_30"></i>;
           if (batteryOutput.chargePercent > 20)
-            return <i className="nf nf-fa-battery_1"></i>;
-          return <i className="nf nf-fa-battery_0"></i>;
+            return <i className="nf nf-md-battery_20"></i>;
+          if (batteryOutput.chargePercent > 10)
+            return <i className="nf nf-md-battery_10"></i>;
+          return <i className="nf nf-md-battery_outline"></i>;
         }
 
         function getVolumeIcon(device) {
@@ -91,6 +102,44 @@
                   {Math.round(output.memory.usage)}%
                 </div>
               )}
+
+              {output.glazewm && (
+                <>
+                  <button
+                    className={`tiling-direction nf ${
+                      output.glazewm.tilingDirection === 'horizontal'
+                        ? 'nf-md-swap_horizontal'
+                        : 'nf-md-swap_vertical'
+                    }`}
+                    onClick={() =>
+                      output.glazewm.runCommand('toggle-tiling-direction')
+                    }
+                  ></button>
+                  {output.glazewm.bindingModes.map(bindingMode => (
+                    <button
+                      className="binding-mode"
+                      key={bindingMode.name}
+                      onClick={() =>
+                        output.glazewm.runCommand(
+                          `wm-disable-binding-mode --name ${bindingMode.name}`,
+                        )
+                      }
+                    >
+                      {bindingMode.displayName ?? bindingMode.name}
+                    </button>
+                  ))}
+                  {output.glazewm.isPaused && (
+                    <button
+                      className="paused-button"
+                      onClick={() =>
+                        output.glazewm.runCommand('wm-toggle-pause')
+                      }
+                    >
+                      PAUSED
+                    </button>
+                  )}
+                </>
+              )}
             </div>
 
             <div className="center">
@@ -114,45 +163,6 @@
             </div>
 
             <div className="right">
-              {output.glazewm && (
-                <>
-                  {output.glazewm.isPaused && (
-                    <button
-                      className="paused-button"
-                      onClick={() =>
-                        output.glazewm.runCommand('wm-toggle-pause')
-                      }
-                    >
-                      PAUSED
-                    </button>
-                  )}
-                  {output.glazewm.bindingModes.map(bindingMode => (
-                    <button
-                      className="binding-mode"
-                      key={bindingMode.name}
-                      onClick={() =>
-                        output.glazewm.runCommand(
-                          `wm-disable-binding-mode --name ${bindingMode.name}`,
-                        )
-                      }
-                    >
-                      {bindingMode.displayName ?? bindingMode.name}
-                    </button>
-                  ))}
-
-                  <button
-                    className={`tiling-direction nf ${
-                      output.glazewm.tilingDirection === 'horizontal'
-                        ? 'nf-md-swap_horizontal'
-                        : 'nf-md-swap_vertical'
-                    }`}
-                    onClick={() =>
-                      output.glazewm.runCommand('toggle-tiling-direction')
-                    }
-                  ></button>
-                </>
-              )}
-
               {output.battery && (
                 <div className="battery">
                   {/* Show icon for whether battery is charging. */}

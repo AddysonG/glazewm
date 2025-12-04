@@ -46,30 +46,25 @@
   --text-color: var(--text);
 
   --icon-color: var(--subtext1);
-
-  --background-color: linear-gradient(
-    rgb(from var(--surface1) r g b / 75%),
-    rgb(from var(--surface0) r g b / 75%)
-  );
-
+  --background-color: rgb(from var(--base) r g b / 70%);
   --button-gradient: linear-gradient(
     rgb(from var(--surface2) r g b / 85%),
     rgb(from var(--surface1) r g b / 85%)
   );
 
   --blue-gradient: linear-gradient(
-    var(--lavender),
-    var(--blue)
+    var(--teal),
+    var(--sapphire)
   );
 }
 
-i {
-  margin-right: 7px;
-  font-size: var(--icon-size);
+* {
+  font-family: "JetBrainsMono Nerd Font Propo";
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  font-family: "JetBrainsMono Nerd Font Propo", ui-monospace, monospace;
   font-size: var(--text-size);
   color: var(--text-color);
   overflow: hidden;
@@ -80,6 +75,11 @@ span,
 p {
   cursor: default;
   user-select: none;
+}
+
+i {
+  margin-right: 7px;
+  font-size: var(--icon-size);
 }
 
 html,
@@ -95,7 +95,7 @@ body,
 .app {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   height: 100%;
   padding: 0 0.5vw;
   border-bottom: 1px solid rgb(from var(--overlay0) r g b / 75%);
@@ -106,10 +106,12 @@ body,
 .right {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .center {
   justify-self: center;
+  align-items: stretch;
 }
 
 .right {
@@ -117,52 +119,51 @@ body,
 }
 
 .logo,
-.binding-mode,
-.tiling-direction,
-.paused-button,
 .network,
 .memory,
 .cpu,
+.tiling-direction,
+.binding-mode,
+.paused-button,
 .battery,
 .volume,
 .date {
     margin: 0 8px;
-}
-
-.workspaces {
-  display: flex;
-  align-items: center;
-}
-
-.workspace {
-  background: var(--button-gradient);
-  margin: 0 2px;
-  padding: 2px 6px;
-  color: var(--text);
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-
-  &.focused,
-  &:hover {
-    color: var(--base);
-    background: var(--blue-gradient);
-  }
+    display: flex;
+    align-items: center;
 }
 
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: var(--button-gradient);
   color: var(--text);
-  border-radius: 2px;
-  padding: 2px 6px;
+  background: transparent;
   border: 0;
   cursor: pointer;
 }
 
+.workspaces {
+  display: flex;
+  align-items: stretch;
+}
+
+.workspace {
+  color: var(--blue);
+  background: transparent;
+  font-weight: bold;
+  padding: 0 1em;
+  border: none;
+  cursor: pointer;
+}
+
+.workspace.focused,
+.workspace:hover {
+  color: var(--base);
+  background: var(--blue);
+}
+
 .logo {
-  background: linear-gradient(var(--lavender), var(--blue));
+  background: linear-gradient(var(--sapphire), var(--blue));
   -webkit-background-clip: text; /* clip background to text */
   -webkit-text-fill-color: transparent; /* hide the normal text color */
   color: var(--blue);
@@ -170,10 +171,6 @@ body,
 
 .network {
   color: var(--sapphire);
-}
-
-.binding-mode {
-  margin-right: 4px;
 }
 
 .memory {
