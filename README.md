@@ -1,9 +1,5 @@
 # GlazeWM Config
 
-## Pre-requisites
-
-- WezTerm installed (for terminal shortcut)
-
 ## Setup
 
 1. Install GlazeWM. If using WinGet: `winget install GlazeWM`.
